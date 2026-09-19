@@ -1215,6 +1215,22 @@ def main():
 
     store.start()
 
+    # Принудительно обновляем цены при каждом запуске.
+    # Остальные данные data.json (заказы, отзывы, скидки и т.д.) сохраняются.
+    store.data["prices"] = {
+        "1": 50,
+        "2": 75,
+        "3": 100,
+        "4": 150,
+        "5": 200,
+        "6": 225,
+        "7": 250,
+        "8": 275,
+        "9": 300,
+        "10": 400,
+    }
+    store.save()
+
     app = Application.builder().token(token).build()
     private = filters.ChatType.PRIVATE
 
